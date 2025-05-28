@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Feedback System</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{{url_for('static',filename='vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+  <link href="{{url_for('static',filename='vendor/icofont/icofont.min.css')}}" rel="stylesheet">
+  <link href="{{url_for('static',filename='vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
+  <link href="{{url_for('static',filename='vendor/venobox/venobox.css')}}" rel="stylesheet">
+  <link href="{{url_for('static',filename='vendor/owl.carousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
+  <link href="{{url_for('static',filename='vendor/aos/aos.css')}}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{{url_for('static',filename='css/style.css')}}" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="d-flex align-items-center">
+    <div class="container">
+      <div class="logo d-block d-lg-none">
+        <a href="index.html"><img src="{{url_for('static',filename='img/logo.png')}}" alt="" class="img-fluid"></a>
+      </div>
+
+      <nav class="nav-menu d-none d-lg-block">
+        <ul class="nav-inner">
+          <li class="active"><a href="/">Home</a></li>
+          <li><a href="#about">Feedback</a></li>
+          <li><a href="#services">Send us feedback</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="/logout">Logout</a></li>
+        </ul>
+      </nav><!-- .nav-menu -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main">
+
+    <!-- ======= About Us Section ======= -->
+    <section id="about" class="about">
+      <div class="container">
+
+        <div class="section-title" data-aos="fade-up">
+          <h2>Help Us Improve</h2>
+          <p>Let us know how we can improve our services.</p>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6" data-aos="fade-right">
+            <div class="image">
+              <img src="{{url_for('static',filename='img/about.svg')}}" class="img-fluid" alt="">
+            </div>
+          </div>
+          <div class="col-lg-6" data-aos="fade-left">
+            <div class="content pt-4 pt-lg-0 pl-0 pl-lg-3">
+              <h3>How to respond to feedback</h3>
+              <ul>
+                <li><i class="bx bx-check-double"></i> Fill out all required fields.</li>
+                <li><i class="bx bx-check-double"></i> Write about what you feel for the particular.</li>
+                <li><i class="bx bx-check-double"></i> Suggestions if any.</li>
+              </ul>
+              <p>
+                Your feedback is invaluable for improving our learning environment, infrastructure, and overall experience.
+              </p>
+              <a href="#services"><input class="btn btn-success" type="button" value="Send us feedback"></a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Us Section -->
+
+<!-- ======= Feedback Section ======= -->
+<!-- ======= Feedback Section ======= -->
+<section id="services" class="services">
+  <div class="container text-center">
+    <div class="section-title" data-aos="fade-up">
+      <h2>Send Us Feedback</h2>
+      <p>We value your feedback</p>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <form action="/predict" method="POST">
+
+          <!-- Teaching Section -->
+          <div class="icon-box mt-5 text-center" data-aos="fade-up">
+            <i class="bx bx-receipt"></i>
+            <h4>Teaching</h4>
+            <div class="form-group">
+              <textarea required class="form-control mx-auto" id="teaching" name="teaching" rows="4" 
+                        placeholder="Write feedback for teaching section...." maxlength="200" oninput="validateInput(event)"></textarea>
+              <div id="feedbackError" style="color: red; display: none;">Only alphabets and spaces are allowed. Feedback cannot be empty, just spaces, or exceed 200 characters.</div>
+            </div>
+          </div>
+
+          <!-- Placements -->
+          <div class="icon-box mt-5 text-center" data-aos="fade-up">
+            <i class="bx bx-cube-alt"></i>
+            <h4>Placements</h4>
+            <div class="form-group">
+              <textarea required class="form-control mx-auto" id="placements" name="placements" rows="4" 
+                        placeholder="Write feedback for placements section...." maxlength="200" oninput="validateInput(event)"></textarea>
+            </div>
+          </div>
+
+          <!-- Collaboration with Companies -->
+          <div class="icon-box mt-5 text-center" data-aos="fade-up">
+            <i class="bx bx-images"></i>
+            <h4>Collaboration with Companies</h4>
+            <div class="form-group">
+              <textarea required class="form-control mx-auto" id="collaboration_with_companies" name="collaboration_with_companies" rows="4" 
+                        placeholder="Write feedback for collaboration with companies section...." maxlength="200" oninput="validateInput(event)"></textarea>
+            </div>
+          </div>
+
+          <!-- Infrastructure -->
+          <div class="icon-box mt-5 text-center" data-aos="fade-up">
+            <i class="bx bx-building-house"></i>
+            <h4>Infrastructure</h4>
+            <div class="form-group">
+              <textarea required class="form-control mx-auto" id="infrastructure" name="infrastructure" rows="4" 
+                        placeholder="Write feedback for infrastructure section...." maxlength="200" oninput="validateInput(event)"></textarea>
+            </div>
+          </div>
+
+          <!-- Hostel -->
+          <div class="icon-box mt-5 text-center" data-aos="fade-up">
+            <i class="bx bx-bed"></i>
+            <h4>Hostel</h4>
+            <div class="form-group">
+              <textarea required class="form-control mx-auto" id="hostel" name="hostel" rows="4" 
+                        placeholder="Write feedback for hostel section...." maxlength="200" oninput="validateInput(event)"></textarea>
+            </div>
+          </div>
+
+          <!-- Library -->
+          <div class="icon-box mt-5 text-center" data-aos="fade-up">
+            <i class="bx bx-book"></i>
+            <h4>Library</h4>
+            <div class="form-group">
+              <textarea required class="form-control mx-auto" id="library" name="library" rows="4" 
+                        placeholder="Write feedback for library section...." maxlength="200" oninput="validateInput(event)"></textarea>
+            </div>
+          </div>
+
+          <!-- Teachers -->
+          {% for i in range(1, 7) %}
+          <div class="icon-box mt-5 text-center" data-aos="fade-up">
+            <i class="bx bx-user"></i>
+            <h4>Teacher {{ i }}</h4>
+            <div class="form-group">
+              <textarea required class="form-control mx-auto" id="teacher{{ i }}" name="teacher{{ i }}" rows="4" 
+                        placeholder="Write feedback for Teacher {{ i }}...." maxlength="200" oninput="validateInput(event)"></textarea>
+            </div>
+          </div>
+          {% endfor %}
+
+          <!-- Submit Button -->
+          <div class="text-center mt-5">
+            <input class="btn btn-success" type="submit" value="Submit Feedback" id="submitBtn" disabled>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section><!-- End Feedback Section -->
+
+<script>
+  function validateInput(event) {
+    const input = event.target;
+    const value = input.value;
+    const feedbackError = document.getElementById('feedbackError');
+    const submitBtn = document.getElementById('submitBtn');
+
+    // Check if the input contains only spaces or is empty
+    const isEmptyOrOnlySpaces = !value.trim(); // Checks if value is empty or contains only spaces
+    
+    // Check if the input contains non-alphabetic characters except ., and ""
+    const isInvalid = /[^a-zA-Z\s.,"]/.test(value);
+
+    // Check if the feedback length exceeds 200 characters
+    const isTooLong = value.length > 200;
+    
+    // Show error message if input is invalid, empty (only spaces), or exceeds character limit
+    if (isInvalid || isEmptyOrOnlySpaces || isTooLong) {
+      feedbackError.style.display = 'block';
+      submitBtn.disabled = true; // Disable submit button
+    } else {
+      feedbackError.style.display = 'none';
+      submitBtn.disabled = false; // Enable submit button if input is valid
+    }
+  }
+</script>
+
+
+
+  <!-- ======= Contact Section ======= -->
+<section id="contact" class="contact section-bg" style="background-color: #333; color: white;">
+  <div class="container">
+    <div class="row">
+      <!-- Contact Section (Left) -->
+      <div class="col-lg-6 contact">
+        <div class="info d-flex flex-column justify-content-center" data-aos="fade-right">
+          <div class="address">
+            <i class="icofont-google-map"></i>
+            <h4>Location:</h4>
+            <p>Jnana Gangothri Campus, Ballari-Hoapete Road, Near Allipur, Ballari, Karnataka</p>
+          </div>
+
+          <div class="email">
+            <i class="icofont-envelope"></i>
+            <h4>Email:</h4>
+            <p>info@feedback.com</p>
+          </div>
+
+          <div class="phone">
+            <i class="icofont-phone"></i>
+            <h4>Call:</h4>
+            <p>+91-8392-237150 / 152 / 153 / 167</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6 contact">
+        <div class="info d-flex flex-column justify-content-center" data-aos="fade-left">
+          <div class="undergraduate-programs">
+            <h4>Undergraduate Programs:</h4>
+            <ul style="list-style-type: disc; padding-left: 60px;">
+              <li>B.E. in Artificial Intelligence & Machine Learning</li>
+              <li>B.E. in Computer Science & Engineering</li>
+              <li>B.E. in Electronics & Communication Engineering</li>
+              <li>B.E. in Electrical & Electronics Engineering</li>
+              <li>B.E. in Mechanical Engineering</li>
+              <li>B.E. in Civil Engineering</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section><!-- End Contact Section -->
+
+<main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    <div class="footer-top">
+
+      <div class="container">
+
+        <div class="row justify-content-center">
+          <div class="col-lg-6">
+            <a href="#header" class="scrollto footer-logo"><img src="{{url_for('static',filename='img/hero-logo.png')}}" alt=""></a>
+            <h3>Student feedback system</h3>
+          </div>
+        </div>
+
+        <div class="row footer-newsletter justify-content-center">
+          <div class="col-lg-6">
+            <form action="" method="post">
+              <input type="email" name="email" placeholder="Enter your Email"><input type="submit" value="Get in touch">
+            </form>
+          </div>
+        </div>
+
+        <div class="social-links">
+          <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+          <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+          <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+          <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+          <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container footer-bottom clearfix">
+      <div class="copyright">
+        &copy; Copyright <strong><span>SFS</span></strong>. All Rights Reserved
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+<a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+<!-- Vendor JS Files -->
+<script src="{{url_for('static',filename='vendor/jquery/jquery.min.js')}}"></script>
+<script src="{{url_for('static',filename='vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{url_for('static',filename='vendor/jquery.easing/jquery.easing.min.js')}}"></script>
+<script src="{{url_for('static',filename='vendor/php-email-form/validate.js')}}"></script>
+<script src="{{url_for('static',filename='vendor/jquery-sticky/jquery.sticky.js')}}"></script>
+<script src="{{url_for('static',filename='vendor/venobox/venobox.min.js')}}"></script>
+<script src="{{url_for('static',filename='vendor/isotope-layout/isotope.pkgd.min.js')}}"></script>
+<script src="{{url_for('static',filename='vendor/owl.carousel/owl.carousel.min.js')}}"></script>
+<script src="{{url_for('static',filename='vendor/aos/aos.js')}}"></script>
+
+<!-- Template Main JS File -->
+<script src="{{url_for('static',filename='js/main.js')}}"></script>
+
+</body>
+
+</html>

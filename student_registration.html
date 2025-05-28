@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Student Registration</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<style>
+    .login-container {
+        margin-top: 5%;
+        margin-bottom: 5%;
+    }
+    .login-logo {
+        position: relative;
+        margin-left: -41.5%;
+    }
+    .login-logo img {
+        position: absolute;
+        width: 20%;
+        margin-top: 19%;
+        background: #282726;
+        border-radius: 4.5rem;
+        padding: 5%;
+    }
+    .login-form-1 {
+        padding: 9%;
+        background: #282726;
+        box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+    }
+    .login-form-1 h3 {
+        text-align: center;
+        margin-bottom: 12%;
+        color: #fff;
+    }
+    .login-form-2 {
+        padding: 9%;
+        background: #f05837;
+        box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+    }
+    .login-form-2 h3 {
+        text-align: center;
+        margin-bottom: 12%;
+        color: #fff;
+    }
+    .btnSubmit {
+        font-weight: 600;
+        width: 50%;
+        color: #282726;
+        background-color: #fff;
+        border: none;
+        border-radius: 1.5rem;
+        padding: 2%;
+    }
+    .btnForgetPwd {
+        color: #fff;
+        font-weight: 600;
+        text-decoration: none;
+    }
+    .btnForgetPwd:hover {
+        text-decoration: none;
+        color: #fff;
+    }
+    .flash-messages {
+        margin: 1rem 0;
+    }
+    .flash-messages ul {
+        list-style: none;
+        padding: 0;
+    }
+    .flash-messages li {
+        margin-bottom: 0.5rem;
+    }
+</style>
+<body>
+    <div class="container login-container">
+        <div class="row">
+            <div class="col-md-6 login-form-1">
+                <h3>Application Registration</h3>
+                <h6 class="fon">Register here to access Student Feedbacks</h6>
+                <div class="flash-messages">
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                            <ul>
+                                {% for category, message in messages %}
+                                    <li class="alert alert-{{ category }}">{{ message }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    {% endwith %}
+                </div>
+            </div>
+            <div class="col-md-6 login-form-2">
+                <div class="login-logo">
+                    <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="Logo" />
+                </div>
+                <h3>Register</h3>
+                <form action="{{ url_for('student_registration') }}" method="POST">
+                    <div class="form-group">
+                        <input type="text" name="usn" class="form-control" placeholder="Your USN *" required />
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" class="form-control" placeholder="Your Email *" required />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="full_name" class="form-control" placeholder="Your Full Name *" required />
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="password" name="password" class="form-control" placeholder="Your Password *" required />
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="confirm-password" name="confirm_password" class="form-control" placeholder="Confirm Password *" required />
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" id="show-password" />
+                        <label for="show-password" style="color: white;">Show my password</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btnSubmit" value="Register" />
+                    </div>
+                    <div class="form-group">
+                        <p>Already have an account? <a href="{{ url_for('login') }}" class="btnForgetPwd">Login here</a></p>
+                    </div>
+                </form>                
+            </div>
+        </div>
+    </div>
+    <script>
+        // JavaScript to toggle password visibility
+        document.getElementById('show-password').addEventListener('change', function () {
+            const passwordField = document.getElementById('password');
+            const confirmPasswordField = document.getElementById('confirm-password');
+            const fieldType = this.checked ? 'text' : 'password';
+            passwordField.type = fieldType;
+            confirmPasswordField.type = fieldType;
+        });
+    </script>
+</body>
+</html>
